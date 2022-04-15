@@ -1,6 +1,7 @@
 package com.example.network.di
 
 import com.example.network.ApiService
+import com.example.network.BuildConfig
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
