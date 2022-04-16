@@ -19,15 +19,12 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private val json = Json { ignoreUnknownKeys = true }
-
-
     @Singleton
     @Provides
     fun provideApi(): ApiService {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://kinopoiskapiunofficial.tech/api/")
+            .baseUrl(BuildConfig.baseUrl)
             .client(okHttpClient())
             .build()
             .create(ApiService::class.java)
@@ -47,6 +44,7 @@ object NetworkModule {
                 okHttpClient.addInterceptor(logging)
             }
         }
+
         return okHttpClient.build()
     }
 }

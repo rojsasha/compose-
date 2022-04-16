@@ -45,24 +45,24 @@ fun FilmItemInfo(film: FilmDto, onClick: (Int) -> Unit) {
             modifier = Modifier
                 .animateContentSize()
                 .padding(8.dp)
-                .clickable { },
+                .clickable { onClick.invoke(film.filmId) },
             shape = RoundedCornerShape(8.dp),
             elevation = 8.dp
         ) {
-            Row() {
+            Row {
                 ImageFilm(
-                    imageLink = "character.imageUrl",
+                    imageLink = film.posterUrlPreview ?: "",
                     modifier = Modifier
                         .fillMaxWidth(0.35f)
                 )
+                Spacer(modifier = Modifier.size(8.dp))
+                FilmInfo(
+                    film = film,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(4.dp)
+                )
             }
-            Spacer(modifier = Modifier.size(8.dp))
-            FilmInfo(
-                film = film,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(4.dp)
-            )
         }
     }
 }
@@ -125,7 +125,7 @@ fun FilmInfo(
         horizontalAlignment = alignment
     ) {
         Text(
-            text = "character.name",
+            text = film.nameRu ?: "",
             fontWeight = FontWeight.Bold,
             style = MaterialTheme.typography.h6,
             maxLines = 1,
@@ -133,11 +133,11 @@ fun FilmInfo(
         )
         Spacer(modifier = Modifier.height(8.dp))
         if (showExtraInfo) {
-            Text(text = "Origin", fontSize = 13.sp)
-            Text(text = "character.origin")
+            Text(text = film.year.toString(), fontSize = 13.sp)
         }
         Spacer(modifier = Modifier.height(8.dp))
 
-        Text(text = "Status", fontSize = 13.sp)
+        Text(text = film.rating.toString(), fontSize = 13.sp)
+
     }
 }

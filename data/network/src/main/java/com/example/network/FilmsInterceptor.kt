@@ -6,7 +6,7 @@ import okhttp3.Response
 class FilmsInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request().newBuilder()
-            .addHeader("X-API-KEY", "d6c5ea94-6731-4d8d-a858-5196f8c01971")
+            .addHeader("X-API-KEY", BuildConfig.apiKey)
             .build()
 
         return chain.proceed(request)

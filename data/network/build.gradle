@@ -14,6 +14,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        buildConfigField "String", "baseUrl", "${base_url}"
+        buildConfigField "String", "apiKey", "${api_key}"
     }
 
     buildTypes {
