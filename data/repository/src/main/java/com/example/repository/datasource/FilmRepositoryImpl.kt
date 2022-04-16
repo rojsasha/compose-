@@ -31,9 +31,9 @@ class FilmsPagingSource(private val apiService: ApiService) : PagingSource<Int, 
 
         return try {
             val filmsResponse = apiService.loadTop250Films("TOP_250_BEST_FILMS", pageNumber)
-            val films = filmsResponse?.films?.map { film ->
+            val films = filmsResponse.films.map { film ->
                 film.toFilm()
-            } ?: emptyList()
+            }
 
             val newPage = pageNumber + 1
 

@@ -2,17 +2,16 @@ package com.example.network.di
 
 import com.example.network.ApiService
 import com.example.network.BuildConfig
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.example.network.FilmsInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -22,15 +21,12 @@ object NetworkModule {
 
     private val json = Json { ignoreUnknownKeys = true }
 
-    @ExperimentalSerializationApi
-    private val converter = json.asConverterFactory("application/json".toMediaType())
 
-    @ExperimentalSerializationApi
     @Singleton
     @Provides
     fun provideApi(): ApiService {
         return Retrofit.Builder()
-            .addConverterFactory(converter)
+            .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://kinopoiskapiunofficial.tech/api/")
             .client(okHttpClient())
             .build()
@@ -42,6 +38,7 @@ object NetworkModule {
         okHttpClient.connectTimeout(30, TimeUnit.SECONDS)
         okHttpClient.readTimeout(30, TimeUnit.SECONDS)
         okHttpClient.writeTimeout(30, TimeUnit.SECONDS)
+        okHttpClient.addInterceptor(FilmsInterceptor())
 
         when {
             BuildConfig.DEBUG -> {

@@ -15,13 +15,13 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 @Composable
 fun AppContent() {
     val navController = rememberAnimatedNavController()
-//    NavHost(navController = navController, startDestination =  Films.FILMS_LIST) {
-//        composable(
-//            route = Films.FILMS_GRAPH
-//        ) {
-//            FilmScreen(){
-//
-//            }
-//        }
-//    }
+    NavHost(navController = navController, startDestination =  Films.FILMS_LIST) {
+        composable(
+            route = Films.FILMS_LIST
+        ) {
+            FilmScreen(){
+
+            }
+        }
+    }
 }
