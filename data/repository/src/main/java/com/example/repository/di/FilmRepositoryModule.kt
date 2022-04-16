@@ -1,5 +1,6 @@
 package com.example.repository.di
 
+import com.example.domain.repositories.FilmsRepository
 import com.example.network.ApiService
 import com.example.repository.datasource.FilmRepositoryImpl
 import dagger.Module
@@ -14,7 +15,7 @@ class FilmRepositoryModule {
 
     @Singleton
     @Provides
-    fun providesCharacterRepository(apiService: ApiService): FilmRepositoryImpl =
+    fun providesCharacterRepository(apiService: ApiService): FilmsRepository =
         FilmRepositoryImpl(apiService)
 
 }

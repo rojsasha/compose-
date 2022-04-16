@@ -33,6 +33,10 @@ android {
     buildFeatures {
         compose true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerVersion kotlin_version
+    }
 }
 
 dependencies {
@@ -40,6 +44,7 @@ dependencies {
     api(project(":domain"))
     api(project(":data:repository"))
     api(project(":common_compose"))
+    api(project(":common"))
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -77,4 +82,5 @@ dependencies {
     implementation "androidx.paging:paging-compose:$paging_compose"
 
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0"
+    implementation "androidx.compose.compiler:compiler:1.2.0-alpha07"
 }
