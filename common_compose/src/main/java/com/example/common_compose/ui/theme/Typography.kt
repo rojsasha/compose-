@@ -6,7 +6,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 val lightThemeTypography = Typography(
-    defaultFontFamily = fontRoboto,
     h1 = TextStyle(
         color = blackText,
         fontWeight = FontWeight.Bold,
@@ -50,7 +49,6 @@ val lightThemeTypography = Typography(
 )
 
 val darkThemeTypography = Typography(
-    defaultFontFamily = fontRoboto,
     h1 = TextStyle(
         color = blackText,
         fontWeight = FontWeight.Bold,

@@ -19,9 +19,7 @@ fun AppContent() {
         composable(
             route = Films.FILMS_LIST
         ) {
-            FilmScreen(){
-
-            }
+            FilmScreen(){}
         }
     }
 }

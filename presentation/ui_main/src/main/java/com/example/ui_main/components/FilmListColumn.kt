@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
+import com.example.common_compose.ui.theme.FilmsTheme
 import com.example.domain.model.FilmDto
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -24,6 +25,7 @@ fun FilmListColumn(
     listState: LazyListState = rememberLazyListState(),
     navigate: (Int) -> Unit = {}
 ) {
+
     LazyColumn(state = listState) {
         items(items) { film ->
             FilmItemInfo(film!!) {

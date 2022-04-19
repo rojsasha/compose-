@@ -10,9 +10,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.common_compose.ui.theme.FilmsTheme
 import com.example.ui_main.components.FilmListColumn
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -24,9 +24,8 @@ fun FilmScreen(navigate: (Int) -> Unit) {
     val characters = state.dataList?.collectAsLazyPagingItems()
     val lazyListState = rememberLazyListState()
 
-    Scaffold() {
+    Scaffold {
         if (state.errorMessage.isNotEmpty()) {
-
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(text = state.errorMessage)
             }
@@ -37,8 +36,6 @@ fun FilmScreen(navigate: (Int) -> Unit) {
                 navigate(characterId)
             }
         }
-
-
     }
 }
 

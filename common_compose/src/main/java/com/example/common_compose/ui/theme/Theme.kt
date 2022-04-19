@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 @Composable
 fun FilmsTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable() () -> Unit
+    content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
         DarkColorPalette
@@ -23,7 +23,6 @@ fun FilmsTheme(
 
     MaterialTheme(
         colors = colors,
-        typography = typography,
         content = content
     )
 }
